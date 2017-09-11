@@ -1,0 +1,24 @@
+{
+    "name": "spapad/yii2helpers",
+    "description": "A collection of yii2 helpers for various tasks",
+    "keywords": ["yii2", "validators"],
+    "license": "GPL3.0",
+    "authors": [
+        {
+            "name": "Stavros Papadakis",
+            "email": "spapad@gmail.com"
+        }
+    ],
+    "type": "library",
+    "version": "1.0.0",
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "spapad\\yii2helpers\\": "src/"
+        }
+    }
+}
