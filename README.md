@@ -39,3 +39,17 @@ if the value of the checked attribute is a certain one (`if`), or when
 ```php
 [['do_action'], DefaultOnOtherAttributeValidator::className(), 'if' => 'yes', 'otherAttributeValue' => -1, 'otherAttribute' => 'selected_action_element'],
 ```
+
+*This is also covered by core Yii functionality*
+
+```php 
+[ 
+    'otherAttribute', 'filter', 
+    'filter' => function ($value) {
+        return $otherAttributeValue;
+    },
+    'when' => function($model) {
+        return $model->attribute == $if;
+    }
+],
+```
