@@ -24,13 +24,15 @@ _This does not validate if a VAT number is registered for use._
 [DefaultOnOtherAttributeValidator](src/validators/DefaultOnOtherAttributeValidator.php) 
 sets a default value `otherAttributeValue` on another attibute named 
 `otherAttribute`, if that attribute does not have a value and 
-if the value of the checked attribute is a certain one (`if`).
+if the value of the checked attribute is a certain one (`if`), or when
+`replace` is set to true.
 
 *Validaror Parameters*
 
 * if, scalar: The value to check against the attribute value (not strict operator used)
 * otherAttributeValue, any value: The "default" value to set
 * otherAttribute, string: The name of the attribute to set (if empty) 
+* replace, boolean: Set to true to force set otherAttribute 
 
 *Example rule*
 

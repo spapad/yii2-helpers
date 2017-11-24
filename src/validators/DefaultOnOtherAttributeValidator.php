@@ -7,19 +7,23 @@ use yii\validators\Validator;
  * DefaultOnOtherAttributeValidator
  * If the value of the attribute is a certain one ([if])
  * sets a default value [otherAttributeValue] on another attibute named
- * [otherAttribute], if that attribute does not have a value.
+ * [otherAttribute], if that attribute does not have a value, or when
+ * [replace] is set to true.
  *
  * [el] Θέτει την τιμή της ιδιότητας [otherAttribute] στην τιμή
- * [otherAttributeValue] εφόσον η τιμή της είναι κενή και
- * η τιμή της ιδιότητας υπό εξέταση είναι ίση με την τιμή [if]
+ * [otherAttributeValue] εφόσον η τιμή της είναι κενή ή εφόσον το 
+ * [replace] είναι ίσο με true και η τιμή της ιδιότητας υπό εξέταση 
+ * είναι ίση με την τιμή [if]
  *
  * @author Stavros Papadakis spapad@gmail.com
  */
 class DefaultOnOtherAttributeValidator extends Validator
 {
+
     public $if;
     public $otherAttributeValue;
     public $otherAttribute;
+    public $replace;
 
     /**
      * @inheritdoc
@@ -51,7 +55,8 @@ class DefaultOnOtherAttributeValidator extends Validator
 
         $other_attribute = $this->otherAttribute;
         if ($model->$attribute == $this->if) { // when criteria is met
-            if (!isset($model->$other_attribute) || empty($model->$other_attribute)) {
+            if (($this->replace === true) ||
+                (!isset($model->$other_attribute) || empty($model->$other_attribute))) {
                 $model->$other_attribute = $this->otherAttributeValue;
             }
         }
